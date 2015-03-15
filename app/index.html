@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>website</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="/favicon.ico">
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <!-- build:css styles/vendor.css -->
+        <!-- bower:css -->
+        <!-- endbower -->
+        <!-- endbuild -->
+        <!-- build:css(.tmp) styles/main.css -->
+        <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+        <link rel="stylesheet" href="styles/main.css">
+        <!-- endbuild -->
+    </head>
+    <body>
+        <!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <h1>Moon Project</h1>
+
+        <nav>
+            <ul>
+                <li><a href='/'>Draw</a></li>
+                <li><a href='/index2.html'>View</a></li>
+                <li><a href='/index2.html'>About</a></li>
+            </ul>
+        </nav> 
+
+        <div id='main-container'>
+            <form id='moon-form' action="" onsubmit="return false">
+                <div id='draw-input'>
+                    <span id="m-pointcount"></span>
+                    <canvas></canvas>
+                </div>
+
+                <div id='text-input'>
+
+                    <h2>Draw Something</h1>
+
+                    <div id='m-text-container'>
+                        <textarea id='m-textarea' placeholder='Describe your drawing in 140 characters...'></textarea>
+                        <!-- optional fields -->
+                        <div id='m-wordcount' class=''> <span id='m-words'>140</span> words left</div>
+                    </div>
+
+                    <div class='action-bar'>
+                        <button class='erase'>
+
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px" width="30px" height="30px" viewBox="2.5 -5.0 50.0 67.5" enable-background="new 0 0 50 50" xml:space="preserve">
+                            <g>
+                                <rect x="1" y="44" fill="inherit" width="44" height="4"/>
+                                <g>
+                                    
+                                        <rect x="21.677" y="6.573" transform="matrix(0.7071 0.7071 -0.7071 0.7071 22.0641 -18.084)" fill="inherit" width="22.366" height="22.036"/>
+                                    <g>
+                                        <path fill="inherit" d="M24.782,42H14.598L3.615,30.882l17.698-17.8l16.074,16.173L24.782,42z M15.846,39h7.687l9.621-9.759     L21.313,17.332L7.847,30.899L15.846,39z"/>
+                                    </g>
+                                </g>
+                            </g>
+                            </svg></button>
+                        <button class='submit'>Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- build:js scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="../bower_components/jquery/dist/jquery.js"></script>
+        <script src="../bower_components/underscore/underscore.js"></script>
+        <script src="../bower_components/processing/processing.js"></script>
+        <script src="../bower_components/x2js/xml2json.min.js"></script>
+        <script src="../bower_components/xml2json/xml2json.js"></script>
+        <script src="../bower_components/get-style-property/get-style-property.js"></script>
+        <script src="../bower_components/get-size/get-size.js"></script>
+        <script src="../bower_components/eventie/eventie.js"></script>
+        <script src="../bower_components/doc-ready/doc-ready.js"></script>
+        <script src="../bower_components/eventEmitter/EventEmitter.js"></script>
+        <script src="../bower_components/jquery-bridget/jquery.bridget.js"></script>
+        <script src="../bower_components/matches-selector/matches-selector.js"></script>
+        <script src="../bower_components/outlayer/item.js"></script>
+        <script src="../bower_components/outlayer/outlayer.js"></script>
+        <script src="../bower_components/masonry/masonry.js"></script>
+        <script src="scripts/base64.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+        
+        <!-- build:js scripts/main.js -->
+        <script src="scripts/utils.js"></script>
+        <script src="scripts/gml-editor.js"></script>
+        <script src="scripts/renderer.js"></script>
+        <script src="scripts/form.js"></script>
+        <!-- endbuild -->
+
+        <script type='text/javascript'>
+
+            app.ui = {};
+            app.ui.textForm = (function(){
+                'use strict';
+                var MAX_CHARS = 140;
+
+                var init = function(){
+                    $('#m-words').html(MAX_CHARS);
+                    $('#m-textarea').keyup(function(){
+                        var txt = $('#m-textarea').val();
+                        var chars = txt.length;
+                        $('#m-words').html('' + (MAX_CHARS-chars) +'');
+                        if (chars>140){
+                            $('#m-wordcount').addClass('negative');
+                        }
+                        else{
+                            $('#m-wordcount').removeClass('negative');
+                        }
+                    });
+                };
+
+                var getVal = function(){
+                    var txt = $('#m-textarea').val();
+                    return (txt.substring(0,140));
+                };
+
+                return {
+                    'init' : init,
+                    'getVal' : getVal
+                };
+            })();
+            
+            app.ui.textForm.init();
+
+        </script>
+
+</body>
+</html>

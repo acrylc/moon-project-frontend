@@ -1,0 +1,62 @@
+
+$card-width : 270px;
+$card-padding : 0px;
+$card-margin: 15px; 
+
+#content{
+	margin:0 auto;
+}
+#cards{
+	padding:0px;
+	max-width:$card-width*3+$card-padding*6+$card-margin*6 + 10px;
+	clear:both;
+	overflow:hidden;
+	margin:0 auto 0 auto;
+	display:block;
+	padding-top:50px;
+
+	@media (max-width : $brkpt-medium) {
+	    max-width:$card-width*2+$card-padding*4+$card-margin*4 + 10px;
+  	}
+	
+	@media (max-width : $brkpt-small) {
+	    max-width:$card-width*1+$card-padding*2+$card-margin*2 + 10px;
+  	}
+}
+
+.card{
+	width: $card-width;
+	padding: $card-padding;
+	display:inline-block;
+	margin:$card-margin;
+	margin-bottom:35px;
+	float:left;
+}
+
+.card.card-text{
+	padding:10px 20px 10px 20px;
+	background-color: rgb(60,169,183);
+	width: $card-width - 40px;
+	font-family:"Merriweather", Helvetica, sans-serif;
+	font-size: 1.15em;
+	line-height:1.5em;
+	color:white;
+}
+
+.author-meta{
+	font-size:0.75em;
+	margin-top:5px;
+	letter-spacing:1px;
+}
+
+.author-name{
+	margin:0px;
+	font-family:Montserrat;
+}
+
+.time{
+	margin:0px;
+	font-family:Montserrat;
+	color: rgb(140,140,140);
+}
+
