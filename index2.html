@@ -1,0 +1,79 @@
+<!DOCTYPE html><html class=no-js><head><meta charset=utf-8><title>website</title><meta name=description content=""><meta name=viewport content="width=device-width"><link rel="shortcut icon" href=/6df2b309.favicon.ico><!--         <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
+ --><!-- Place favicon.ico and apple-touch-icon.png in the root directory --><link rel=stylesheet href=styles/d790443b.main.css><body><!--[if lt IE 10]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]--><h1>Moon Project</h1><nav><ul><li><a href="/">Draw</a></li><li><a href=/index2.html>View</a></li><li><a href=/index2.html>About</a></li></ul></nav><div id=main-container><div id=content><ul id=cards></ul></div></div><script type=text/template id=author-meta-template><div class='author-meta'>
+
+            <% if (name) { %>
+               by <p class='author-name'><%-name%></p>
+            <% } else { %>
+                by <p class='author-name'>Anonymous</p>
+            <% } %>
+
+            <% if (location) { %>
+                from <p class='author-location'><%-name%></p>
+            <% } %>
+                <p class='time'></p>
+
+
+            </div></script><!-- template --><script type=text/template id=text-card-template><li class='card card-text'>
+
+                <p><%-text%></p>
+
+            </li></script><script type=text/template id=drawing-card-template><li class='card'>
+
+                    <div class='author-meta'>
+                        <p class='author-name'>Anonymous</p>
+                        <p class='time'>10:00</p>
+                    </div>
+            </li></script><script src=scripts/a45e031d.vendor.js></script><script src=scripts/752c6661.main.js></script><script type=text/javascript>var x2js = new X2JS(),
+                app = app || {},
+                lastId = '',
+                containerId = 'cards',
+                ajaxState = 1;
+
+            'use strict';
+            var container = document.querySelector('#cards');
+            var addCards = function(ladsId){
+                $.getJSON('drawings/download3').success(function(obj){
+                    app.renderer.render(obj, 270);
+                    app.renderer.render(obj, 270);
+                    app.renderer.render(obj, 270);
+                    app.renderer.render(obj, 270);
+                    app.renderer.render(obj, 270);
+                    app.renderer.render(obj, 270);
+                    app.renderer.render(obj, 270);
+                    app.renderer.render(obj, 270);
+                    app.renderer.render(obj, 270);
+                })
+                // console.log('getting');
+                // var apiUrl = 'http://54.68.129.229/api/entries';
+                // if (lastId){
+                //     apiUrl = apiUrl + '/' + lastId;
+                // }
+                // ajaxState = 1;
+                // $.ajax({
+                //     url: apiUrl,
+                //     dataType: "jsonp",    crossDomain:true, 
+                //     success : function (data, textStatus, jqXHR) { 
+                //         lastId = data.lastId
+                //         data.entries.forEach(function(entry){
+                //             app.renderer.render(entry,270);
+                //         });
+                //         ajaxState=0;
+                //     }
+                // });
+                var msnry = new Masonry( '#cards', {
+                    columnWidth: 300,
+                    itemSelector: '.card'
+                });
+            }
+
+            $(window).on('load', function(){
+                           $(window).scroll(function() {
+               if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                    addCards(lastId);
+               }
+            });
+             addCards();
+
+            })</script>
